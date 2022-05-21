@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./../src-tauri/icons/icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/script.js"></script>
   <title>StopWatch</title>
@@ -16,9 +17,9 @@
     <div id="Watch">
       <div id="time">00:00:00:00</div>
       <div class="buttons">
-        <button class="btn" id="start" onclick="">Start</button>
-        <button class="btn" id="stop" onclick="" disabled>Stop</button>
-        <button class="btn" id="r" onclick="" disabled>Reset</button>
+        <button class="btn" id="start" data-start onclick="">Start</button>
+        <button class="btn" id="stop" data-stop onclick="" disabled>Stop</button>
+        <button class="btn" id="r" data-reset onclick="" disabled>Reset</button>
       </div>
     </div>
   </div>
