@@ -6,10 +6,10 @@ const buttonsElm = document.querySelectorAll("[data-button]");
 const lapContainerElm = document.querySelector("[data-laps]");
 
 //! VARIABLES
-let msecs = 0;
-let secs = 0;
-let mins = 0;
-let hrs = 0;
+let msec = 0;
+let sec = 0;
+let min = 0;
+let hr = 0;
 let running = false;
 let windowInterval = null;
 
@@ -44,12 +44,48 @@ const enableButtons = (buttonName) => {
     return;
   });
 };
+
+//? Watch Funtions
+// starts the watch
+const startWatch = () => {
+  msec++;
+  checkTime();
+  changeTime();
+};
+
+// changes the time in document
+const changeTime = () => {
+  timeElm.innerHTML = `${hr < 10 ? `0${hr}` : `${hr}`}:${
+    min < 10 ? `0${min}` : `${min}`
+  }:${sec < 10 ? `0${sec}` : `${sec}`}:${msec < 10 ? `0${msec}` : `${msec}`}`;
+};
+// checks the time for change
+const checkTime = () => {
+  if (msec / 100 === 1) {
+    msec = 0;
+    sec++;
+    if (sec / 60 === 1) {
+      sec = 0;
+      min++;
+      if (min / 60 === 1) {
+        min = 0;
+        hr++;
+      }
+    }
+  }
+  return;
+};
+
+//? Buttons Functions
 // start function function when user clicks start
 const start = () => {
   disableButton("start");
   enableButtons("start");
   hideButton("start");
   showButton("pause");
+  if (running) return;
+  running = true;
+  interval = setInterval(startWatch, 10);
 };
 // stop function function when user clicks stop
 const stop = () => {
@@ -76,7 +112,7 @@ const lap = () => {
 
 // button click handler function
 const buttonClickHandler = (e) => {
-  switch (e.path[0].dataset.button) {
+  switch (e.composedPath()[0].dataset.button) {
     case "start":
       start();
       break;
