@@ -12,6 +12,7 @@ let min = 0;
 let hr = 0;
 let running = false;
 let windowInterval = null;
+let laps = [];
 
 //! FUNCTIONS
 //? Uitilites Funtions
@@ -52,7 +53,14 @@ const startWatch = () => {
   checkTime();
   changeTime();
 };
-
+// stops the watch
+const stopWatch = () => {
+  msec = 0;
+  sec = 0;
+  min = 0;
+  hr = 0;
+  changeTime();
+};
 // changes the time in document
 const changeTime = () => {
   timeElm.innerHTML = `${hr < 10 ? `0${hr}` : `${hr}`}:${
@@ -75,39 +83,83 @@ const checkTime = () => {
   }
   return;
 };
+// makes lap time
+const makeLapTime = () => {
+  return `${hr < 10 ? `0${hr}` : `${hr}`}:${min < 10 ? `0${min}` : `${min}`}:${
+    sec < 10 ? `0${sec}` : `${sec}`
+  }:${msec < 10 ? `0${msec}` : `${msec}`}`;
+};
+// appends laps to the lap container element
+const makeLaps = () => {
+  // clears the lap container
+  lapContainerElm.innerHTML = "Laps";
+  laps.forEach((lap, i) => {
+    elm = document.createElement("div");
+    elm.classList.add("lap");
+    elm.innerHTML = `${lap}<span>${i} lap</span>`;
+    lapContainerElm.appendChild(elm);
+  });
+};
 
 //? Buttons Functions
 // start function function when user clicks start
 const start = () => {
+  if (running) return;
   disableButton("start");
   enableButtons("start");
   hideButton("start");
   showButton("pause");
-  if (running) return;
   running = true;
-  interval = setInterval(startWatch, 10);
+  windowInterval = setInterval(startWatch, 10);
 };
 // stop function function when user clicks stop
 const stop = () => {
+  if (!running) return;
   disableButton("stop");
   enableButtons("stop");
+  disableButton("stop");
+  disableButton("lap");
+  hideButton("pause");
+  showButton("start");
+  running = false;
+  window.clearInterval(windowInterval);
+  stopWatch();
 };
 // reset function function when user clicks reset
 const reset = () => {
   disableButton("reset");
   enableButtons("reset");
+  disableButton("stop");
+  disableButton("lap");
+  hideButton("pause");
+  showButton("start");
+  running = false;
+  window.clearInterval(windowInterval);
+  msec = 0;
+  sec = 0;
+  min = 0;
+  hr = 0;
+  laps = [];
+  changeTime();
+  makeLaps();
 };
 // pause function function when user clicks pause
 const pause = () => {
+  if (!running) return;
   disableButton("pause");
   enableButtons("pause");
+  disableButton("stop");
+  disableButton("lap");
   hideButton("pause");
   showButton("start");
+  running = false;
+  window.clearInterval(windowInterval);
 };
 // lap function function when user clicks lap
 const lap = () => {
-  disableButton("lap");
-  enableButtons("lap");
+  laps.push(makeLapTime());
+  makeLaps();
+  return;
 };
 
 // button click handler function
