@@ -96,7 +96,7 @@ const makeLaps = () => {
   laps.forEach((lap, i) => {
     elm = document.createElement("div");
     elm.classList.add("lap");
-    elm.innerHTML = `${lap}<span>${i} lap</span>`;
+    elm.innerHTML = `${lap}<span>${i + 1} lap</span>`;
     lapContainerElm.appendChild(elm);
   });
 };
