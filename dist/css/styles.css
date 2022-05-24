@@ -23,6 +23,7 @@
 }
 body {
   background: var(--secondary);
+  overflow: hidden;
 }
 .container {
   display: flex;
@@ -69,7 +70,7 @@ body {
   background: var(--accent);
   color: var(--secondary);
 }
-#pause {
+.hidden {
   display: none;
 }
 .laps {
