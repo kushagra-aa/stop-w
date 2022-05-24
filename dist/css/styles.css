@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap");
+:root {
+  --primary: 196, 217, 243;
+  --secondary: #142241;
+  --accent: #f05454;
+}
+::-moz-selection {
+  color: var(--secondary);
+  background: var(--accent);
+}
+/* Code for Firefox */
+::selection {
+  color: var(--secondary);
+  background: var(--accent);
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  color: rgb(var(--primary));
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: var(--secondary);
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  gap: 1em;
+}
+#time {
+  font-size: 5rem;
+  color: var(--accent);
+  transition: all 0.2s ease-in-out;
+}
+.buttons-container {
+  display: flex;
+  gap: 1em;
+}
+.button {
+  height: 3em;
+  width: 10em;
+  color: var(--accent);
+  background: var(--secondary);
+  border: 2px solid var(--accent);
+  outline: none;
+  border-radius: 0.1em;
+  transition: all 0.5s ease-in-out;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 800;
+  user-select: none;
+}
+.button:hover {
+  background: var(--accent);
+  color: var(--secondary);
+  border-color: rgb(var(--primary));
+}
+.button:disabled {
+  filter: brightness(80%);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+#stop {
+  background: var(--accent);
+  color: var(--secondary);
+}
+#pause {
+  display: none;
+}
+.laps {
+  height: 35%;
+  width: 65%;
+  font-family: "Robo Mono", monospace;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1em;
+  font-size: 1.5em;
+  overflow: scroll;
+  user-select: none;
+}
+.laps::-webkit-scrollbar {
+  display: none;
+}
+.laps {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.lap {
+  width: 100%;
+  padding: 0.3em;
+  border-radius: 0.1em;
+  background: rgba(var(--primary), 0.2);
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.5s ease-in-out;
+  user-select: text;
+}
+.lap:hover {
+  background: rgba(var(--primary), 0.25);
+}
+.lap span {
+  color: var(--accent);
+  font-weight: 100;
+  text-transform: capitalize;
+  font-size: 1em;
+}

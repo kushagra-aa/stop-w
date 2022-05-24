@@ -3,7 +3,7 @@
   "build": {
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
-    "devPath": "../dist",
+    "devPath": "http://localhost:5500/dist/",
     "distDir": "../dist"
   },
   "package": {
@@ -57,9 +57,9 @@
       {
         "fullscreen": false,
         "height": 600,
-        "resizable": true,
+        "resizable": false,
         "title": "Stop Watch",
-        "width": 800
+        "width": 900
       }
     ]
   }

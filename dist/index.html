@@ -5,22 +5,30 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="./../src-tauri/icons/icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.ico" />
+  <link rel="shortcut icon" href="">
   <script defer src="js/script.js"></script>
   <title>StopWatch</title>
 </head>
 
 <body>
-  <div class="con">
-    <h2>StopWatch!</h2>
-    <div id="Watch">
-      <div id="time">00:00:00:00</div>
-      <div class="buttons">
-        <button class="btn" id="start" data-start onclick="">Start</button>
-        <button class="btn" id="stop" data-stop onclick="" disabled>Stop</button>
-        <button class="btn" id="r" data-reset onclick="" disabled>Reset</button>
-      </div>
+  <div class="container">
+    <div id="time" data-time>00:00:00:00</div>
+    <div class="buttons-container">
+      <button class="button" id="start" data-button="start" onclick="">Start</button>
+      <button class="button" id="pause" data-button="pause" onclick="">Pause</button>
+      <button class="button" id="stop" data-button="stop" onclick="" disabled>Stop</button>
+      <button class="button" id="reset" data-button="reset" onclick="" disabled>Reset</button>
+      <button class="button" id="lap" data-button="lap" onclick="" disabled>Lap</button>
+    </div>
+    <div class="laps" data-laps>
+      Laps
+      <!-- fake lap -->
+      <!-- <div class="lap">
+        00:00:00:00
+        <span>1 lap</span>
+      </div> -->
     </div>
   </div>
 </body>
